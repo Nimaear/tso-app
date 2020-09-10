@@ -1,7 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 interface InputProps {
+}
+
+interface ApplicationState {
+  user: string
 }
 
 const StyledInput = styled.input`
@@ -27,9 +32,10 @@ const InputWrapper = styled.div`
 `;
 
 const Input: React.FC<InputProps> = (props) => {
+  const user = useSelector((state: ApplicationState) => state.user);
   return (
     <InputWrapper>
-      <StyledInput {...props} />
+      <StyledInput {...props} value={user} />
     </InputWrapper>
   );
 };
