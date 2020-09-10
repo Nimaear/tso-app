@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import Button from './components/Button';
 import GoogleSearchBar from './components/GoogleSearchBar';
 import Main from './components/Main';
-import { setUser } from './store';
-
+import { setUser } from './store/profileReducer';
 
 
 const App = () => {
@@ -12,9 +11,6 @@ const App = () => {
 
   const setNewUserToJuho = () => {
     dispatch(setUser('Juho'))
-  }
-  const setNewUserToHenrik = () => {
-    dispatch({ type: 'SOMETHING' })
   }
 
   const setNewUserToEva = () => {
@@ -24,7 +20,6 @@ const App = () => {
   return <Main>
     <GoogleSearchBar />
     <Button onClick={setNewUserToJuho}>Set user to Juho</Button>
-    <Button onClick={setNewUserToHenrik}>Set user to Henrik</Button>
     <Button onClick={setNewUserToEva}>Set user to Eva</Button>
   </Main>
 };

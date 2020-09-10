@@ -1,30 +1,33 @@
-import { AnyAction, createStore } from 'redux';
+import { AnyAction, combineReducers, createStore } from 'redux';
+import profileReducer from './store/profileReducer';
+import subscriptionReducer from './store/subscriptionReducer';
 
-export const setUser = (user: string) => ({
-  type: 'SET_USER',
-  user
-});
-
-function mainReducer(state = { user: '' }, action: AnyAction) {
-  switch (action.type) {
-    case 'SET_USER':
-      const { user } = action;
-      return {
-        ...state,
-        user
-      }
-    case 'SOMETHING':
-      return {
-        ...state,
-        user: 'God'
-      }
-    default:
-      return state
-  }
+export interface Subscription {
+  name: string;
+  number: string;
 }
 
-const createMyStore = () => createStore(mainReducer, {
-  user: ''
-});
+export interface ProfileState {
+  user: string
+}
+
+export interface SubscriptionState {
+  list: Subscription[]
+}
+
+export interface ApplicationState {
+  profile: ProfileState;
+  subscriptions: SubscriptionState;
+}
+
+export interface MyReducers<T = {}> {
+  [action: string]: (state: T, action: AnyAction) => T;
+}
+
+const createMyStore = () => createStore(combineReducers({
+  profile: profileReducer,
+  subscriptions: subscriptionReducer
+  //@ts-ignore
+}), {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default createMyStore;

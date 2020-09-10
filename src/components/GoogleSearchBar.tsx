@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { ApplicationState } from '../store';
 import Button from './Button';
 import Centered from './Centered';
 import GoogleLogo from './GoogleLogo';
 import Input from './Input';
 import MaxWidth from './MaxWidth';
+import SubscriptionList from './SubscriptionList';
 
 interface GoogleSearchBarProps {
 }
 
-interface ApplicationState {
-  user: string
-}
 
 const GoogleSearchBar: React.FC<GoogleSearchBarProps> = ({ }) => {
   const [searchButtonText, setSearchButtonText] = useState('Google search');
@@ -19,13 +18,14 @@ const GoogleSearchBar: React.FC<GoogleSearchBarProps> = ({ }) => {
   const change = () => {
     setSearchButtonText('I am changed now')
   }
-  const state = useSelector((state: ApplicationState) => state);
+  const profile = useSelector((state: ApplicationState) => state.profile);
   return <MaxWidth>
+    <SubscriptionList />
     <Centered>
       <GoogleLogo />
     </Centered>
     <Centered>
-      Logged in user: {state.user}
+      Logged in user: {profile.user}
     </Centered>
     <Centered>
       <Input />
