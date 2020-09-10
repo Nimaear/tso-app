@@ -46,6 +46,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 # Assignment
 
-1. Use (https://fakerapi.it/api/v1/addresses?_quantity=10)[https://fakerapi.it/api/v1/addresses?_quantity=10] to get some fake data (hint: use fetch)
+1. Use [https://fakerapi.it/api/v1/addresses?_quantity=10](https://fakerapi.it/api/v1/addresses?_quantity=10) to get some fake data (hint: use fetch)
 2. create an address reducer in redux store
 3. create an address list component to list the addresss
